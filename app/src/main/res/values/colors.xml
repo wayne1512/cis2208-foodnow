@@ -11,4 +11,6 @@
 
 
     <color name="light_blue">#7286d3</color>
+    <color name="blueish_white">#E5E0FF</color>
+    <color name="almost_white">#FFF2F2</color>
 </resources>
