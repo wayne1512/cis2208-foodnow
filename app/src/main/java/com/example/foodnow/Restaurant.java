@@ -5,9 +5,10 @@ import android.graphics.drawable.Drawable;
 import java.util.HashMap;
 
 public class Restaurant {
+    public int id;
+
     public String name;
     public String subtitle;
-    public String image;
     public float lat;
     public float lon;
     public boolean isFav;
@@ -25,10 +26,10 @@ public class Restaurant {
         return map;
     }
 
-    public Restaurant(String name, String subtitle, String image, float lat, float lon, boolean isFav, String[] foodTypes) {
+    public Restaurant(int id, String name, String subtitle, float lat, float lon, boolean isFav, String[] foodTypes) {
+        this.id = id;
         this.name = name;
         this.subtitle = subtitle;
-        this.image = image;
         this.lat = lat;
         this.lon = lon;
         this.isFav = isFav;

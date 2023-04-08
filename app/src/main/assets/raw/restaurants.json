@@ -1,0 +1,58 @@
+[
+  {
+    "id": 1,
+    "name": "flames",
+    "subtitle": "",
+    "lat": 35.9005688,
+    "lon": 14.4839716,
+    "foodType": ""
+  },
+  {
+    "id": 2,
+    "name": "The Meatball Guys",
+    "subtitle": "ALL-ROUND EXPERIENCE",
+    "lat": 35.9006394,
+    "lon": 14.4842019,
+    "foodType": ""
+  },
+  {
+    "id": 3,
+    "name": "Pizza Hut",
+    "subtitle": "No one outpizzas the hut",
+    "lat": 35.9020145,
+    "lon": 14.4796001,
+    "foodType": ""
+    },
+  {
+    "id": 4,
+    "name": "Cuba at Campus Hub",
+    "subtitle": "Bistro - Pizzeria - Café",
+    "lat": 35.9020188,
+    "lon": 14.4801448,
+    "foodType": ""
+  },
+  {
+    "id": 5,
+    "name": "Burger King",
+    "subtitle": "",
+    "lat": 35.9020534,
+    "lon": 14.4806903,
+    "foodType": ""
+  },
+  {
+    "id": 6,
+    "name": "Starbucks Campus Hub",
+    "subtitle": "",
+    "lat": 35.9020535,
+    "lon": 14.4806933,
+    "foodType": ""
+  },
+  {
+    "id": 7,
+    "name": "The Food Faculty",
+    "subtitle": "The Food Faculty... The Official Student Diner!",
+    "lat": 35.9020342,
+    "lon": 14.4808951,
+    "foodType": ""
+  }
+]

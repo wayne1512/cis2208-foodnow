@@ -52,7 +52,7 @@ public class DiscoverFragment extends Fragment {
     private void fetchItems() {
 
         //if the items change, update the recycler view
-        discoverViewModel.getItems().observe(getViewLifecycleOwner(),
+        discoverViewModel.getItems(getContext()).observe(getViewLifecycleOwner(),
                 this::updateItemsList);
     }
     private void setUpRecyclerView() {

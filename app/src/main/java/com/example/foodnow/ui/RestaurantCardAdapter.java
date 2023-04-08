@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
+import com.example.foodnow.data.images.ImageReader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,15 +46,15 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             Restaurant item = items.get(position);
 
             ImageView imageView = holder.imageImageView;
-            byte[] decodedString = Base64.decode(item.image, Base64.DEFAULT);
-            Bitmap decodedBytes = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
-            imageView.setImageBitmap(decodedBytes);
+
+            imageView.setImageBitmap(ImageReader.getRestaurantBanner(imageView.getContext(), item.id));
 
 
             //get 40dp to pixels to be the size of each food type icon
             int size = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, holder.foodTypeIconBar.getResources().getDisplayMetrics());
 
-
+            if (item.foodTypes == null)
+                item.foodTypes = new String[0];
             for (String foodType : item.foodTypes) {
 
                 int imageResource = Restaurant.foodTypeDrawableMap.get(foodType);
