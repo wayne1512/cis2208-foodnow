@@ -5,7 +5,7 @@
     "subtitle": "",
     "lat": 35.9005688,
     "lon": 14.4839716,
-    "foodTypes": ["pizza"]
+    "foodTypes": ["sandwiches","burgers","pizza","pasta","vegetarian","desert"]
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "subtitle": "ALL-ROUND EXPERIENCE",
     "lat": 35.9006394,
     "lon": 14.4842019,
-    "foodTypes": []
+    "foodTypes": ["meat"]
   },
   {
     "id": 3,
@@ -29,7 +29,7 @@
     "subtitle": "Bistro - Pizzeria - Café",
     "lat": 35.9020188,
     "lon": 14.4801448,
-    "foodTypes": []
+    "foodTypes": ["burgers","pizza","pasta","meat","vegetarian","desert"]
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "subtitle": "",
     "lat": 35.9020534,
     "lon": 14.4806903,
-    "foodTypes": []
+    "foodTypes": ["burgers"]
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "subtitle": "",
     "lat": 35.9020535,
     "lon": 14.4806933,
-    "foodTypes": []
+    "foodTypes": ["coffee","desert"]
   },
   {
     "id": 7,
@@ -53,6 +53,6 @@
     "subtitle": "The Food Faculty... The Official Student Diner!",
     "lat": 35.9020342,
     "lon": 14.4808951,
-    "foodTypes": []
+    "foodTypes": ["sandwiches","pizza","coffee"]
   }
 ]
