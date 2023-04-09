@@ -5,7 +5,7 @@
     "subtitle": "",
     "lat": 35.9005688,
     "lon": 14.4839716,
-    "foodType": ""
+    "foodTypes": ["pizza"]
   },
   {
     "id": 2,
@@ -13,7 +13,7 @@
     "subtitle": "ALL-ROUND EXPERIENCE",
     "lat": 35.9006394,
     "lon": 14.4842019,
-    "foodType": ""
+    "foodTypes": []
   },
   {
     "id": 3,
@@ -21,7 +21,7 @@
     "subtitle": "No one outpizzas the hut",
     "lat": 35.9020145,
     "lon": 14.4796001,
-    "foodType": ""
+    "foodTypes":  ["pizza"]
     },
   {
     "id": 4,
@@ -29,7 +29,7 @@
     "subtitle": "Bistro - Pizzeria - Café",
     "lat": 35.9020188,
     "lon": 14.4801448,
-    "foodType": ""
+    "foodTypes": []
   },
   {
     "id": 5,
@@ -37,7 +37,7 @@
     "subtitle": "",
     "lat": 35.9020534,
     "lon": 14.4806903,
-    "foodType": ""
+    "foodTypes": []
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "subtitle": "",
     "lat": 35.9020535,
     "lon": 14.4806933,
-    "foodType": ""
+    "foodTypes": []
   },
   {
     "id": 7,
@@ -53,6 +53,6 @@
     "subtitle": "The Food Faculty... The Official Student Diner!",
     "lat": 35.9020342,
     "lon": 14.4808951,
-    "foodType": ""
+    "foodTypes": []
   }
 ]

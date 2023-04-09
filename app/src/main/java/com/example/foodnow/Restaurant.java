@@ -22,6 +22,7 @@ public class Restaurant {
 
         map.put("burgers",R.drawable.ic_fooditem_burger_24dp);
         map.put("pizza",R.drawable.ic_fooditem_pizza_24dp);
+        map.put("vegetarian",R.drawable.ic_fooditem_pizza_24dp);
 
         return map;
     }
