@@ -1,16 +1,11 @@
 package com.example.foodnow.ui;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Base64;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.StackView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
+import com.example.foodnow.Util;
 import com.example.foodnow.data.images.ImageReader;
 
 import java.util.ArrayList;
@@ -50,8 +46,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             imageView.setImageBitmap(ImageReader.getRestaurantBanner(imageView.getContext(), item.id));
 
 
-            //get 40dp to pixels to be the size of each food type icon
-            int size = (int)TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40, holder.foodTypeIconBar.getResources().getDisplayMetrics());
+            //get 24dp to pixels to be the size of each food type icon
+            int size = Util.convertDPtoPX(24,holder.foodTypeIconBar.getResources());
 
             if (item.foodTypes == null)
                 item.foodTypes = new String[0];
@@ -64,6 +60,7 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
                 typeImageView.setImageResource(imageResource);
                 typeImageView.setMaxHeight(size);
                 typeImageView.setMaxWidth(size);
+                typeImageView.setPadding(0,0,Util.convertDPtoPX(8, holder.foodTypeIconBar.getResources()),0);
                 typeImageView.requestLayout();
 
 
@@ -73,7 +70,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             TextView nameTextView = holder.nameTextView;
             nameTextView.setText(item.name);
         }
-        @Override
+
+    @Override
         public int getItemCount() {
             return items.size();
         }
