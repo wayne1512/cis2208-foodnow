@@ -1,9 +1,11 @@
 package com.example.foodnow.ui;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -11,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.foodnow.DetailsActivity;
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
 import com.example.foodnow.Util;
@@ -80,6 +83,7 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
         public TextView nameTextView;
 
         public LinearLayout foodTypeIconBar;
+        public Button detailsButton;
 
         public ViewHolder(final View itemView) {
             super(itemView);
@@ -90,17 +94,19 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
             foodTypeIconBar = (LinearLayout) itemView.findViewById(R.id.restaurantCard_foodTypeIcons);
 
+            detailsButton = itemView.findViewById(R.id.restaurantCard_detailsButton);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    itemOnClick();
+                    itemOnClick(v);
                 }
             });
         }
 
-        public void itemOnClick() {
-            System.out.println("click");
+        public void itemOnClick(View v) {
+            Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+            v.getContext().startActivity(intent);
         }
     }
 }
