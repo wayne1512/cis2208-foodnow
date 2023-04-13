@@ -26,13 +26,11 @@
             android:id="@+id/restaurantCard_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/lora"
             android:paddingVertical="3dp"
             android:paddingStart="10dp"
             android:paddingEnd="10dp"
             android:text="restaurant name"
-            android:textSize="30sp"
-            android:textStyle="bold" />
+            android:textAppearance="@style/TextAppearance.FoodNow.Headline4" />
 
         <LinearLayout
             android:id="@+id/iconBar"
@@ -87,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/inter"
                 android:text="100m"
-                android:textSize="20sp"
+                android:textAppearance="@style/TextAppearance.FoodNow.body2"
                 android:textStyle="bold" />
 
             <Space
@@ -102,6 +100,7 @@
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
                 android:text="more details"
+                android:textAppearance="@style/TextAppearance.FoodNow.Button"
                 app:cornerRadius="999999dp" />
 
         </LinearLayout>
