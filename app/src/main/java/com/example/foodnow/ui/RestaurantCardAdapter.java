@@ -44,6 +44,9 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             //get the required restaurant
             Restaurant item = items.get(position);
 
+            //set restaurant to be used on click
+            holder.restaurant = item;
+
             ImageView imageView = holder.imageImageView;
 
             imageView.setImageBitmap(ImageReader.getRestaurantBanner(imageView.getContext(), item.id));
@@ -52,6 +55,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             //get 24dp to pixels to be the size of each food type icon
             int size = Util.convertDPtoPX(24,holder.foodTypeIconBar.getResources());
 
+            //remove all food type icons
+            holder.foodTypeIconBar.removeAllViews();
             if (item.foodTypes == null)
                 item.foodTypes = new String[0];
             for (String foodType : item.foodTypes) {
@@ -79,6 +84,9 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             return items.size();
         }
     public class ViewHolder extends RecyclerView.ViewHolder {
+
+        public Restaurant restaurant;
+
         public ImageView imageImageView;
         public TextView nameTextView;
 
@@ -87,6 +95,7 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
         public ViewHolder(final View itemView) {
             super(itemView);
+
             imageImageView = (ImageView)
                     itemView.findViewById(R.id.restaurantCard_imageView);
             nameTextView = (TextView)
@@ -106,6 +115,9 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
         public void itemOnClick(View v) {
             Intent intent = new Intent(v.getContext(), DetailsActivity.class);
+
+            intent.putExtra("restaurant",restaurant);
+
             v.getContext().startActivity(intent);
         }
     }

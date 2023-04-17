@@ -1,8 +1,10 @@
 package com.example.foodnow;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
-public class Restaurant {
+
+public class Restaurant implements Serializable {
     public int id;
 
     public String name;

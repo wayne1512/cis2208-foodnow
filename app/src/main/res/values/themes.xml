@@ -22,11 +22,19 @@
     </style>
 
 
-    <style name="TextAppearance.FoodNow.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+    <style name="TextAppearance.FoodNow.CardTitle" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="fontFamily">@font/lora</item>
         <item name="android:fontFamily">@font/lora</item>
         <item name="android:textSize">32sp</item>
         <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="TextAppearance.FoodNow.DetailsTitle" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/lora</item>
+        <item name="android:fontFamily">@font/lora</item>
+        <item name="android:textSize">48sp</item>
     </style>
 
     <style name="TextAppearance.FoodNow.Button" parent="TextAppearance.MaterialComponents.Button">
@@ -35,6 +43,14 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.FoodNow.handwrittenSubtitle" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/caveat</item>
+        <item name="android:fontFamily">@font/caveat</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+
     </style>
 
 
