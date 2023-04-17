@@ -14,6 +14,8 @@ public class Restaurant implements Serializable {
     public boolean isFav;
     public String[] foodTypes;
 
+    public float distanceTo;
+
     public static HashMap<String, Integer> foodTypeDrawableMap = generateFoodTypeDrawableMap();
 
     private static HashMap<String, Integer> generateFoodTypeDrawableMap() {

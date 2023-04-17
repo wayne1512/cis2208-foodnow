@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.DetailsActivity;
+import com.example.foodnow.LocationHelper;
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
 import com.example.foodnow.Util;
@@ -77,6 +78,9 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
             TextView nameTextView = holder.nameTextView;
             nameTextView.setText(item.name);
+
+            TextView distanceTextView = holder.distanceTextView;
+            distanceTextView.setText(item.distanceTo + " m");
         }
 
     @Override
@@ -89,6 +93,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
         public ImageView imageImageView;
         public TextView nameTextView;
+        public TextView distanceTextView;
+
 
         public LinearLayout foodTypeIconBar;
         public Button detailsButton;
@@ -104,6 +110,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             foodTypeIconBar = (LinearLayout) itemView.findViewById(R.id.restaurantCard_foodTypeIcons);
 
             detailsButton = itemView.findViewById(R.id.restaurantCard_detailsButton);
+
+            distanceTextView = itemView.findViewById(R.id.restaurantCard_distanceText);
 
             detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override
