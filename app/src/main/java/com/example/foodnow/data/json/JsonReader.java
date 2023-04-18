@@ -3,12 +3,10 @@ package com.example.foodnow.data.json;
 import android.content.Context;
 import android.location.Location;
 
-import androidx.annotation.NonNull;
-
 import com.example.foodnow.LocationHelper;
 import com.example.foodnow.Restaurant;
 import com.example.foodnow.Util;
-import com.google.android.gms.tasks.Continuation;
+import com.example.foodnow.backend.DbHelper;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.gson.Gson;
@@ -16,6 +14,8 @@ import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class JsonReader {
     public static Task<Restaurant[]> readRestaurants(Context context, LocationHelper locationHelper) {
@@ -32,6 +32,17 @@ public class JsonReader {
         Gson gson = new Gson();
         Restaurant[] restaurants = gson.fromJson(jsonString, Restaurant[].class);
 
+
+        //set favourites
+        ArrayList<Integer> favourites = new DbHelper(context).getFavourites();
+        for (Integer favourite : favourites) {
+            for (Restaurant restaurant : restaurants) {
+                if (restaurant.id == favourite)
+                    restaurant.isFav = true;
+            }
+
+
+        }
 
         Task<Location> currentLocTask = locationHelper.getCurrentLocation();
         //calculate distance

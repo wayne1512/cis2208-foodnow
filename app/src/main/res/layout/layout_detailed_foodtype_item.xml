@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp">
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="12dp">
 
     <ImageView
         android:id="@+id/detailed_foodtype_rowitem_image"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_fooditem_burger_24dp" />
@@ -18,7 +20,7 @@
         android:id="@+id/detailed_foodtype_rowitem_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="16dp"
         android:layout_marginEnd="8dp"
         android:text="TextView"
         app:layout_constraintBottom_toBottomOf="@+id/detailed_foodtype_rowitem_image"

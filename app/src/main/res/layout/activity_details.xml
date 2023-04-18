@@ -84,11 +84,15 @@
             app:srcCompat="@drawable/ic_directions_48dp" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/details_favouriteButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:drawableEnd="@drawable/ic_star_outline_24dp"
+            android:paddingLeft="32dp"
+            android:paddingTop="8dp"
+            android:paddingRight="32dp"
+            android:paddingBottom="8dp"
             android:text="add to favourites"
             app:cornerRadius="999999dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -103,10 +107,11 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="16dp"
+            android:background="@drawable/layout_card"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button" />
+            app:layout_constraintTop_toBottomOf="@+id/details_favouriteButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
