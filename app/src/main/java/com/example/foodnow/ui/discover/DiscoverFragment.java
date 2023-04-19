@@ -74,9 +74,18 @@ public class DiscoverFragment extends Fragment {
                 LinearLayoutManager(recyclerView.getContext()));
     }
     private void updateItemsList(List<Restaurant> newItems) {
+        //clear previous items
+        items.clear();
         //update the recycler view
         items.addAll(newItems);
         //notify the adapter that the dataset has changed, so the recycler view can renderer to reflect the changed data
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        fetchItems();
     }
 }

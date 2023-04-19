@@ -2,6 +2,7 @@ package com.example.foodnow.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.DetailsActivity;
@@ -18,6 +20,7 @@ import com.example.foodnow.LocationHelper;
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
 import com.example.foodnow.Util;
+import com.example.foodnow.backend.DbHelper;
 import com.example.foodnow.data.images.ImageReader;
 
 import java.util.ArrayList;
@@ -80,8 +83,26 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             nameTextView.setText(item.name);
 
             TextView distanceTextView = holder.distanceTextView;
-            distanceTextView.setText(item.distanceTo + " m");
+            distanceTextView.setText(Util.formatDistance(item.distanceTo));
+
+            updateFavButton(holder,item);
         }
+
+        private void updateFavButton(@NonNull ViewHolder holder,Restaurant restaurant){
+        ImageView favouriteButton = holder.favButton;
+
+
+        int iconResource;
+
+        if (restaurant.isFav){
+            iconResource = R.drawable.ic_star_24dp;
+        } else {
+            iconResource = R.drawable.ic_star_outline_24dp;
+        }
+
+        favouriteButton.setImageResource(iconResource);
+
+    }
 
     @Override
         public int getItemCount() {
@@ -94,6 +115,8 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
         public ImageView imageImageView;
         public TextView nameTextView;
         public TextView distanceTextView;
+
+        public ImageView favButton;
 
 
         public LinearLayout foodTypeIconBar;
@@ -112,6 +135,24 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
             detailsButton = itemView.findViewById(R.id.restaurantCard_detailsButton);
 
             distanceTextView = itemView.findViewById(R.id.restaurantCard_distanceText);
+
+            favButton = itemView.findViewById(R.id.restaurantCard_fav);
+
+
+            favButton.setOnClickListener(v->{
+                if (restaurant.isFav){
+                    restaurant.isFav = false;
+                    DbHelper dbHelper = new DbHelper(favButton.getContext());
+                    dbHelper.unsetFavourite(restaurant);
+                } else {
+                    restaurant.isFav = true;
+                    DbHelper dbHelper = new DbHelper(favButton.getContext());
+                    dbHelper.setFavourite(restaurant);
+                }
+
+                //set text/icon
+                updateFavButton(this,restaurant);
+            });
 
             detailsButton.setOnClickListener(new View.OnClickListener() {
                 @Override

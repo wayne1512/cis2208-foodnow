@@ -14,4 +14,15 @@ public class Util {
         Location.distanceBetween(startLatitude,startLongitude,endLatitude,endLongitude,res);
         return res[0];
     }
+
+    public static String formatDistance(float meters){
+        if (meters < 1)
+            return "0 m";
+        if (meters < 1000)
+            return String.format("%.0f m",meters);
+        else
+            return String.format("%.1f km",meters/1000);
+
+
+    }
 }
