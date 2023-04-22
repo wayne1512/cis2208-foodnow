@@ -2,7 +2,6 @@ package com.example.foodnow;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
-import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,7 +16,6 @@ import android.widget.TextView;
 import com.example.foodnow.backend.DbHelper;
 import com.example.foodnow.data.images.ImageReader;
 import com.example.foodnow.ui.DetailsFoodTypeItemCardAdapter;
-import com.example.foodnow.ui.RestaurantCardAdapter;
 
 import java.util.Arrays;
 
@@ -40,6 +38,9 @@ public class DetailsActivity extends AppCompatActivity {
         titleView.setText(restaurant.name);
         TextView subtitleView = findViewById(R.id.details_subtitle);
         subtitleView.setText(restaurant.subtitle);
+
+        TextView distanceView = findViewById(R.id.details_distance_text);
+        distanceView.setText(Util.formatDistance(restaurant.distanceTo));
 
         Button favouriteButton = findViewById(R.id.details_favouriteButton);
         favouriteButton.setOnClickListener((View view)->{
@@ -69,6 +70,8 @@ public class DetailsActivity extends AppCompatActivity {
         //set the layout manager
         recyclerView.setLayoutManager(new
                 LinearLayoutManager(recyclerView.getContext()));
+
+
     }
 
     private void updateFavButton(Restaurant restaurant){

@@ -59,7 +59,7 @@
             app:layout_constraintTop_toBottomOf="@+id/details_subtitle" />
 
         <TextView
-            android:id="@+id/restaurantCard_distanceText2"
+            android:id="@+id/details_distance_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
