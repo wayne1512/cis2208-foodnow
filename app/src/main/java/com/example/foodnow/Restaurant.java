@@ -9,8 +9,8 @@ public class Restaurant implements Serializable {
 
     public String name;
     public String subtitle;
-    public float lat;
-    public float lon;
+    public double lat;
+    public double lon;
     public boolean isFav;
     public String[] foodTypes;
 

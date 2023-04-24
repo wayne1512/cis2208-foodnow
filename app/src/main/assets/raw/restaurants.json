@@ -3,24 +3,24 @@
     "id": 1,
     "name": "Flames",
     "subtitle": "",
-    "lat": 35.9005688,
-    "lon": 14.4839716,
+    "lat": 35.9003739987622,
+    "lon": 14.483792463800173,
     "foodTypes": ["sandwiches","burgers","pizza","pasta","vegetarian","desert"]
   },
   {
     "id": 2,
     "name": "The Meatball Guys",
     "subtitle": "ALL-ROUND EXPERIENCE",
-    "lat": 35.9006394,
-    "lon": 14.4842019,
+    "lat": 35.90069462203583,
+    "lon": 14.484580704870867,
     "foodTypes": ["meat"]
   },
   {
     "id": 3,
     "name": "Pizza Hut",
     "subtitle": "No one outpizzas the hut",
-    "lat": 35.9020145,
-    "lon": 14.4796001,
+    "lat": 35.905538986546425,
+    "lon": 14.480339422259483,
     "foodTypes":  ["pizza"]
     },
   {

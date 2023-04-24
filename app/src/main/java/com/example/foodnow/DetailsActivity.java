@@ -5,22 +5,28 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.foodnow.backend.DbHelper;
 import com.example.foodnow.data.images.ImageReader;
 import com.example.foodnow.ui.DetailsFoodTypeItemCardAdapter;
 
 import java.util.Arrays;
+import java.util.Locale;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    @SuppressLint("QueryPermissionsNeeded")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +77,19 @@ public class DetailsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new
                 LinearLayoutManager(recyclerView.getContext()));
 
+        findViewById(R.id.details_open_map_button).setOnClickListener((View v)->{
+            Uri intentUri = Uri.parse(String.format(Locale.US,"https://www.google.com/maps/dir/?api=1&destination=%.20f,%.20f",restaurant.lat,restaurant.lon));
 
+            Intent i = new Intent(Intent.ACTION_VIEW,intentUri);
+
+
+            try {
+                startActivity(i);
+
+            } catch (ActivityNotFoundException e){
+                Toast.makeText(this,R.string.mapsLoadError,Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
     private void updateFavButton(Restaurant restaurant){
