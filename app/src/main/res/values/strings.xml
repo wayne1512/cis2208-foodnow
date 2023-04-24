@@ -9,4 +9,5 @@
     <string name="button_add_to_favourites">Add to favourites</string>
     <string name="button_remove_from_favourites">Remove from favourites</string>
     <string name="mapsLoadError">Failed to open map</string>
+    <string name="search">Search</string>
 </resources>
