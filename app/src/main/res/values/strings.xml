@@ -10,4 +10,5 @@
     <string name="button_remove_from_favourites">Remove from favourites</string>
     <string name="mapsLoadError">Failed to open map</string>
     <string name="search">Search</string>
+    <string name="Filter">Filter</string>
 </resources>

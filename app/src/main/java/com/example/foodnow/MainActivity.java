@@ -1,6 +1,7 @@
 package com.example.foodnow;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -89,6 +90,18 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        if (item.getItemId() == R.id.filterButton) {
+            //open filters
+            Log.d("debug", "open filter tab: ");
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+
     }
 
 }
