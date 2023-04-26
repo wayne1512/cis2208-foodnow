@@ -3,7 +3,6 @@ package com.example.foodnow.ui.discover;
 import android.content.Context;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -21,6 +20,7 @@ public class DiscoverViewModel extends ViewModel {
 
     //list of restaurants
     private MutableLiveData<List<Restaurant>> items;
+    private String searchString = null;
 
     public DiscoverViewModel() {
         items = new MutableLiveData<>();
@@ -34,10 +34,29 @@ public class DiscoverViewModel extends ViewModel {
             @NonNull
             @Override
             public Task<Void> then(Restaurant[] restaurants) throws Exception {
-                items.setValue(Arrays.asList(restaurants));
+                List<Restaurant> l = new ArrayList<>(Arrays.asList(restaurants));
+                if (searchString != null)
+                    //filter out the items that don't match the search
+                    l.removeIf(restaurant -> !restaurant.name.toLowerCase().contains(searchString.toLowerCase()));
+
+                items.setValue(l);
+                //noinspection ConstantConditions
                 return null;
             }
         });
         return items;
+    }
+
+    public MutableLiveData<List<Restaurant>> getItems() {
+        return items;
+    }
+
+    public void setItems(MutableLiveData<List<Restaurant>> items) {
+        this.items = items;
+    }
+
+
+    public void setSearchString(String searchString) {
+        this.searchString = searchString;
     }
 }

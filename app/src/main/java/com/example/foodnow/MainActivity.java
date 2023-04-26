@@ -8,9 +8,11 @@ import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
@@ -21,6 +23,10 @@ import com.example.foodnow.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     private ActivityMainBinding binding;
+
+    MutableLiveData<String> searchString = new MutableLiveData<>("");
+
+    MainActivityViewModel vm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        vm = new ViewModelProvider(this).get(MainActivityViewModel.class);
     }
 
     @Override
@@ -51,6 +60,35 @@ public class MainActivity extends AppCompatActivity {
         MenuItem searchViewItem = menu.findItem(R.id.search_bar);
         SearchView searchView = (SearchView) searchViewItem.getActionView();
 
-        return false;
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            // Override onQueryTextSubmit method which is call when submit query is searched
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                //update the search query from the view model
+                vm.setSearchQuery(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                return false;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                //update the search query from the view model
+                vm.setSearchQuery("");
+                return false;
+            }
+        });
+
+
+        return super.onCreateOptionsMenu(menu);
     }
+
 }

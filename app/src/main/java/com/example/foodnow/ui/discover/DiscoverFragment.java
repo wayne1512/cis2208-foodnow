@@ -12,13 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.LocationHelper;
+import com.example.foodnow.MainActivityViewModel;
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
 import com.example.foodnow.databinding.FragmentDiscoverBinding;
 import com.example.foodnow.ui.RestaurantCardAdapter;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class DiscoverFragment extends Fragment {
@@ -34,15 +34,25 @@ public class DiscoverFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
+
         locationHelper = new LocationHelper(getActivity());
 
         discoverViewModel =
                 new ViewModelProvider(this).get(DiscoverViewModel.class);
 
+
         binding = FragmentDiscoverBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         recyclerView = root.findViewById(R.id.restaurants_list);
+
+
+        MainActivityViewModel activityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
+        activityViewModel.getSearchQueryLiveData().observe(getViewLifecycleOwner(), query -> {
+            discoverViewModel.setSearchString(query);
+            fetchItems();
+        });
+
 
         setUpRecyclerView();
         fetchItems();
