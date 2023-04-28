@@ -11,4 +11,5 @@
     <string name="mapsLoadError">Failed to open map</string>
     <string name="search">Search</string>
     <string name="Filter">Filter</string>
+    <string name="required_food_types">Required food types</string>
 </resources>

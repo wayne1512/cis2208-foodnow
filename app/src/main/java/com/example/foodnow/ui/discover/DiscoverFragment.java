@@ -53,6 +53,11 @@ public class DiscoverFragment extends Fragment {
             fetchItems();
         });
 
+        activityViewModel.getFilterLiveQuery().observe(getViewLifecycleOwner(),filter->{
+            discoverViewModel.setFilter(filter);
+            fetchItems();
+        });
+
 
         setUpRecyclerView();
         fetchItems();

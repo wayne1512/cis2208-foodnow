@@ -1,5 +1,7 @@
 package com.example.foodnow;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -9,6 +11,10 @@ import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultCallback;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -96,12 +102,28 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle item selection
         if (item.getItemId() == R.id.filterButton) {
+
             //open filters
-            Log.d("debug", "open filter tab: ");
+            Intent intent = new Intent(this, FiltersActivity.class);
+            filterActivityResultLauncher.launch(intent);
             return true;
         }
         return super.onOptionsItemSelected(item);
 
     }
+
+    ActivityResultLauncher<Intent> filterActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            new ActivityResultCallback<ActivityResult>() {
+                @Override
+                public void onActivityResult(ActivityResult result) {
+                    if (result.getResultCode() == Activity.RESULT_OK) {
+                        // There are no request codes
+                        Intent data = result.getData();
+                        Filter f = (Filter) data.getSerializableExtra("filter");
+                        vm.setFilter(f);
+                    }
+                }
+            });
 
 }
