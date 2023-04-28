@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -64,7 +65,7 @@ public class FilterFoodTypeItemCardAdapter extends RecyclerView.Adapter<FilterFo
         public ImageView imageView;
         public TextView textView;
 
-        public SwitchMaterial requiredSwitch;
+        public CheckBox requiredSwitch;
 
 
 

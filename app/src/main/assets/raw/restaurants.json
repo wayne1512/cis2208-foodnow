@@ -27,32 +27,32 @@
     "id": 4,
     "name": "Cuba at Campus Hub",
     "subtitle": "Bistro - Pizzeria - Café",
-    "lat": 35.9020188,
-    "lon": 14.4801448,
+    "lat": 35.90194979972536,
+    "lon": 14.480451296129043,
     "foodTypes": ["burgers","pizza","pasta","meat","vegetarian","desert"]
   },
   {
     "id": 5,
     "name": "Burger King",
     "subtitle": "",
-    "lat": 35.9020534,
-    "lon": 14.4806903,
+    "lat": 35.902164959816496,
+    "lon": 14.480883849212065,
     "foodTypes": ["burgers"]
   },
   {
     "id": 6,
     "name": "Starbucks Campus Hub",
     "subtitle": "",
-    "lat": 35.9020535,
-    "lon": 14.4806933,
+    "lat": 35.902576893304165,
+    "lon": 14.480713817560433,
     "foodTypes": ["coffee","desert"]
   },
   {
     "id": 7,
     "name": "The Food Faculty",
     "subtitle": "The Food Faculty... The Official Student Diner!",
-    "lat": 35.9020342,
-    "lon": 14.4808951,
+    "lat": 35.90216144599193,
+    "lon": 14.480595508098922,
     "foodTypes": ["sandwiches","pizza","coffee"]
   }
 ]

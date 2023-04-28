@@ -7,13 +7,22 @@
     android:layout_marginHorizontal="8dp"
     android:layout_marginVertical="12dp">
 
+    <CheckBox
+        android:id="@+id/filter_foodtype_rowitem_switch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:id="@+id/filter_foodtype_rowitem_image"
         android:layout_width="24dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/filter_foodtype_rowitem_switch"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_fooditem_burger_24dp" />
 
@@ -26,17 +35,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/filter_foodtype_rowitem_image"
         app:layout_constraintStart_toEndOf="@+id/filter_foodtype_rowitem_image"
         app:layout_constraintTop_toTopOf="@+id/filter_foodtype_rowitem_image" />
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/filter_foodtype_rowitem_switch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/filter_foodtype_rowitem_text"
-        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
