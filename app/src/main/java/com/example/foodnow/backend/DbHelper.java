@@ -20,27 +20,33 @@ public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(createTables());
     }
+
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int
             newVersion) {
         db.execSQL(dropTables());
         onCreate(db);
     }
-    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
+
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
+
     private String createTables() {
         return "CREATE TABLE " + FavoriteContract.FavouriteEntry.TABLE_NAME + " ("
                 +
                 FavoriteContract.FavouriteEntry._ID + " INTEGER PRIMARY KEY, " +
                 _restaurant_id + " INTEGER UNIQUE)";
     }
+
     private String dropTables() {
         return "DROP TABLE IF EXISTS " +
                 FavoriteContract.FavouriteEntry.TABLE_NAME;
     }
+
     public long setFavourite(Restaurant restaurant) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -49,11 +55,11 @@ public class DbHelper extends SQLiteOpenHelper {
         return db.insert(FavoriteContract.FavouriteEntry.TABLE_NAME, null, values);
     }
 
-    public long unsetFavourite(Restaurant restaurant){
+    public long unsetFavourite(Restaurant restaurant) {
         SQLiteDatabase db = this.getWritableDatabase();
 
         String selection = _restaurant_id + " = ?";
-        String[] selectionArgs = { Integer.toString(restaurant.id) };
+        String[] selectionArgs = {Integer.toString(restaurant.id)};
 
         return db.delete(FavoriteContract.FavouriteEntry.TABLE_NAME, selection, selectionArgs);
     }
@@ -78,7 +84,7 @@ public class DbHelper extends SQLiteOpenHelper {
                 sortOrder // The sort order
         );
 
-        while(cursor.moveToNext()) {
+        while (cursor.moveToNext()) {
             long id =
                     cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
             int restaurant_id =
@@ -88,6 +94,7 @@ public class DbHelper extends SQLiteOpenHelper {
         cursor.close();
         return favourites;
     }
+
     public boolean getFavouriteByID(int id) {
         SQLiteDatabase db = this.getReadableDatabase();
         String[] projection = {
@@ -96,7 +103,7 @@ public class DbHelper extends SQLiteOpenHelper {
         };
         // Filter results WHERE "id" = condition
         String selection = _restaurant_id + " = ?";
-        String[] selectionArgs = { Integer.toString(id) };
+        String[] selectionArgs = {Integer.toString(id)};
         Cursor cursor = db.query(
                 FavoriteContract.FavouriteEntry.TABLE_NAME, // The table to query
                 projection, // The array of columns to return

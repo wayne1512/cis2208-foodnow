@@ -1,4 +1,4 @@
-package com.example.foodnow.ui.discover;
+package com.example.foodnow.ui.notifications;
 
 import android.content.Context;
 
@@ -15,18 +15,18 @@ import com.google.android.gms.tasks.Task;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
-public class DiscoverViewModel extends ViewModel {
+public class RandomViewModel extends ViewModel {
 
     //list of restaurants
     private MutableLiveData<List<Restaurant>> items;
     private String searchString = null;
     private Filter filter = null;
 
-    public DiscoverViewModel() {
+    public RandomViewModel() {
         items = new MutableLiveData<>();
     }
 
@@ -47,7 +47,9 @@ public class DiscoverViewModel extends ViewModel {
                         l.removeIf(restaurant -> !new HashSet<>(Arrays.asList(restaurant.foodTypes)).containsAll(filter.requiredFoodTypes));
                 }
 
-                l.sort(Comparator.comparingDouble(r -> r.distanceTo));
+                //shuffle
+                Collections.shuffle(l);
+
                 items.setValue(l);
 
                 //noinspection ConstantConditions
@@ -73,5 +75,4 @@ public class DiscoverViewModel extends ViewModel {
     public void setFilter(Filter filter) {
         this.filter = filter;
     }
-
 }

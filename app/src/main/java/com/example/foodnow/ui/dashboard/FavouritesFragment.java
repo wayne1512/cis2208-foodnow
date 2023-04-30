@@ -1,4 +1,4 @@
-package com.example.foodnow.ui.discover;
+package com.example.foodnow.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,21 +15,20 @@ import com.example.foodnow.LocationHelper;
 import com.example.foodnow.MainActivityViewModel;
 import com.example.foodnow.R;
 import com.example.foodnow.Restaurant;
-import com.example.foodnow.databinding.FragmentDiscoverBinding;
+import com.example.foodnow.databinding.FragmentFavouritesBinding;
 import com.example.foodnow.ui.RestaurantCardAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class DiscoverFragment extends Fragment {
+public class FavouritesFragment extends Fragment {
 
-    private DiscoverViewModel discoverViewModel;
+    private FavouritesViewModel favouritesViewModel;
     private RestaurantCardAdapter adapter;
-    private FragmentDiscoverBinding binding;
+    private FragmentFavouritesBinding binding;
     private RecyclerView recyclerView;
     private final List<Restaurant> items = new ArrayList<>();
     View noResFoundView;
-
 
     private LocationHelper locationHelper;
 
@@ -39,11 +38,11 @@ public class DiscoverFragment extends Fragment {
 
         locationHelper = new LocationHelper(getActivity());
 
-        discoverViewModel =
-                new ViewModelProvider(this).get(DiscoverViewModel.class);
+        favouritesViewModel =
+                new ViewModelProvider(this).get(FavouritesViewModel.class);
 
 
-        binding = FragmentDiscoverBinding.inflate(inflater, container, false);
+        binding = FragmentFavouritesBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
         recyclerView = root.findViewById(R.id.restaurants_list);
@@ -53,12 +52,12 @@ public class DiscoverFragment extends Fragment {
 
         MainActivityViewModel activityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
         activityViewModel.getSearchQueryLiveData().observe(getViewLifecycleOwner(), query -> {
-            discoverViewModel.setSearchString(query);
+            favouritesViewModel.setSearchString(query);
             fetchItems();
         });
 
         activityViewModel.getFilterLiveQuery().observe(getViewLifecycleOwner(), filter -> {
-            discoverViewModel.setFilter(filter);
+            favouritesViewModel.setFilter(filter);
             fetchItems();
         });
 
@@ -78,7 +77,7 @@ public class DiscoverFragment extends Fragment {
     private void fetchItems() {
 
         //if the items change, update the recycler view
-        discoverViewModel.getItems(getContext(), locationHelper).observe(getViewLifecycleOwner(),
+        favouritesViewModel.getItems(getContext(), locationHelper).observe(getViewLifecycleOwner(),
                 this::updateItemsList);
     }
 

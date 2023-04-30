@@ -1,4 +1,4 @@
-package com.example.foodnow.ui.discover;
+package com.example.foodnow.ui.dashboard;
 
 import android.content.Context;
 
@@ -19,14 +19,14 @@ import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
-public class DiscoverViewModel extends ViewModel {
+public class FavouritesViewModel extends ViewModel {
 
     //list of restaurants
     private MutableLiveData<List<Restaurant>> items;
     private String searchString = null;
     private Filter filter = null;
 
-    public DiscoverViewModel() {
+    public FavouritesViewModel() {
         items = new MutableLiveData<>();
     }
 
@@ -41,6 +41,10 @@ public class DiscoverViewModel extends ViewModel {
                 if (searchString != null)
                     //filter out the items that don't match the search
                     l.removeIf(restaurant -> !restaurant.name.toLowerCase().contains(searchString.toLowerCase()));
+
+
+                //remove those which are not favourite
+                l.removeIf(r -> !r.isFav);
 
                 if (filter != null) {
                     if (filter.requiredFoodTypes != null)
@@ -73,5 +77,4 @@ public class DiscoverViewModel extends ViewModel {
     public void setFilter(Filter filter) {
         this.filter = filter;
     }
-
 }

@@ -15,7 +15,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class JsonReader {
     public static Task<Restaurant[]> readRestaurants(Context context, LocationHelper locationHelper) {
@@ -27,7 +26,9 @@ public class JsonReader {
             inputStream.read(buffer);
             inputStream.close();
             jsonString = new String(buffer, StandardCharsets.UTF_8);
-        } catch (IOException e) { e.printStackTrace(); }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         Gson gson = new Gson();
         Restaurant[] restaurants = gson.fromJson(jsonString, Restaurant[].class);
@@ -54,7 +55,7 @@ public class JsonReader {
                 }
                 return Tasks.forResult(restaurants);
             });
-        } else{
+        } else {
             return Tasks.forResult(restaurants);
 
         }

@@ -2,16 +2,11 @@ package com.example.foodnow;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.SearchView;
-
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -19,15 +14,14 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.example.foodnow.databinding.ActivityMainBinding;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -102,15 +96,14 @@ public class MainActivity extends AppCompatActivity {
         updateFilterButton();
 
 
-
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void updateFilterButton () {
+    private void updateFilterButton() {
 
         int iconResource;
 
-        if (vm.getFilter()!=null && !vm.getFilter().requiredFoodTypes.isEmpty())
+        if (vm.getFilter() != null && !vm.getFilter().requiredFoodTypes.isEmpty())
             iconResource = R.drawable.ic_filter_icon_activated_24dp;
         else
             iconResource = R.drawable.ic_filter_icon_24dp;
@@ -125,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
             //open filters
             Intent intent = new Intent(this, FiltersActivity.class);
-            intent.putExtra("filter",vm.getFilter());
+            intent.putExtra("filter", vm.getFilter());
             filterActivityResultLauncher.launch(intent);
             return true;
         }

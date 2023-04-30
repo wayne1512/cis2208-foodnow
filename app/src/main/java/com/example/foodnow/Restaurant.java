@@ -22,14 +22,14 @@ public class Restaurant implements Serializable {
         HashMap<String, Integer> map = new HashMap<>();
 
 
-        map.put("burgers",R.drawable.ic_fooditem_burger_24dp);
-        map.put("pizza",R.drawable.ic_fooditem_pizza_24dp);
-        map.put("pasta",R.drawable.ic_fooditem_pasta_24dp);
-        map.put("vegetarian",R.drawable.ic_fooditem_vegetarian_24dp);
-        map.put("desert",R.drawable.ic_fooditem_desert_24dp);
-        map.put("meat",R.drawable.ic_fooditem_meat_24dp);
-        map.put("sandwiches",R.drawable.ic_fooditem_sandwich_24dp);
-        map.put("coffee",R.drawable.ic_fooditem_coffee_24dp);
+        map.put("burgers", R.drawable.ic_fooditem_burger_24dp);
+        map.put("pizza", R.drawable.ic_fooditem_pizza_24dp);
+        map.put("pasta", R.drawable.ic_fooditem_pasta_24dp);
+        map.put("vegetarian", R.drawable.ic_fooditem_vegetarian_24dp);
+        map.put("desert", R.drawable.ic_fooditem_desert_24dp);
+        map.put("meat", R.drawable.ic_fooditem_meat_24dp);
+        map.put("sandwiches", R.drawable.ic_fooditem_sandwich_24dp);
+        map.put("coffee", R.drawable.ic_fooditem_coffee_24dp);
 
         return map;
     }

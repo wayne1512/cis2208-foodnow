@@ -1,10 +1,5 @@
 package com.example.foodnow;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -16,6 +11,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodnow.backend.DbHelper;
 import com.example.foodnow.data.images.ImageReader;
@@ -31,7 +31,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
-        
+
         //get the intent and extract the data
         Intent intent = getIntent();
         Restaurant restaurant = ((Restaurant) intent.getSerializableExtra("restaurant"));
@@ -49,8 +49,8 @@ public class DetailsActivity extends AppCompatActivity {
         distanceView.setText(Util.formatDistance(restaurant.distanceTo));
 
         Button favouriteButton = findViewById(R.id.details_favouriteButton);
-        favouriteButton.setOnClickListener((View view)->{
-            if (restaurant.isFav){
+        favouriteButton.setOnClickListener((View view) -> {
+            if (restaurant.isFav) {
                 restaurant.isFav = false;
                 DbHelper dbHelper = new DbHelper(this);
                 dbHelper.unsetFavourite(restaurant);
@@ -77,29 +77,29 @@ public class DetailsActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new
                 LinearLayoutManager(recyclerView.getContext()));
 
-        findViewById(R.id.details_open_map_button).setOnClickListener((View v)->{
-            Uri intentUri = Uri.parse(String.format(Locale.US,"https://www.google.com/maps/dir/?api=1&destination=%.20f,%.20f",restaurant.lat,restaurant.lon));
+        findViewById(R.id.details_open_map_button).setOnClickListener((View v) -> {
+            Uri intentUri = Uri.parse(String.format(Locale.US, "https://www.google.com/maps/dir/?api=1&destination=%.20f,%.20f", restaurant.lat, restaurant.lon));
 
-            Intent i = new Intent(Intent.ACTION_VIEW,intentUri);
+            Intent i = new Intent(Intent.ACTION_VIEW, intentUri);
 
 
             try {
                 startActivity(i);
 
-            } catch (ActivityNotFoundException e){
-                Toast.makeText(this,R.string.mapsLoadError,Toast.LENGTH_LONG).show();
+            } catch (ActivityNotFoundException e) {
+                Toast.makeText(this, R.string.mapsLoadError, Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    private void updateFavButton(Restaurant restaurant){
+    private void updateFavButton(Restaurant restaurant) {
         Button favouriteButton = findViewById(R.id.details_favouriteButton);
 
 
         int textResource;
         int iconResource;
 
-        if (restaurant.isFav){
+        if (restaurant.isFav) {
             textResource = R.string.button_remove_from_favourites;
             iconResource = R.drawable.ic_star_24dp;
         } else {
@@ -108,12 +108,12 @@ public class DetailsActivity extends AppCompatActivity {
         }
 
 
-        Drawable icon = ContextCompat.getDrawable(this,iconResource);
-        int iconSize = Util.convertDPtoPX(24,this.getResources());
-        icon.setBounds(0,0,iconSize,iconSize);
+        Drawable icon = ContextCompat.getDrawable(this, iconResource);
+        int iconSize = Util.convertDPtoPX(24, this.getResources());
+        icon.setBounds(0, 0, iconSize, iconSize);
 
         favouriteButton.setText(textResource);
-        favouriteButton.setCompoundDrawablesRelative(null,null, icon,null);
+        favouriteButton.setCompoundDrawablesRelative(null, null, icon, null);
 
     }
 }
