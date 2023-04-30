@@ -24,6 +24,17 @@ public class FiltersActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filters);
 
+
+        Intent intent = getIntent();
+        Filter filter = (Filter) intent.getSerializableExtra("filter");
+        if (filter != null){
+            if (filter.requiredFoodTypes != null)
+                requiredFoodTypes = filter.requiredFoodTypes;
+            else
+                requiredFoodTypes = new HashSet<>();
+        }
+
+
         RecyclerView recyclerView = findViewById(R.id.filter_foodtype_list);
         //get the list of foodtypes and pass them to the recycler view
         RecyclerView.Adapter<FilterFoodTypeItemCardAdapter.ViewHolder> adapter = new FilterFoodTypeItemCardAdapter(Arrays.asList(Restaurant.foodTypeDrawableMap.keySet().toArray(new String[0])),requiredFoodTypes);

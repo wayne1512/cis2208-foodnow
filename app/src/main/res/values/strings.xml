@@ -12,4 +12,6 @@
     <string name="search">Search</string>
     <string name="Filter">Filter</string>
     <string name="required_food_types">Required food types</string>
+    <string name="clear">Clear</string>
+    <string name="save">save</string>
 </resources>

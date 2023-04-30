@@ -52,6 +52,8 @@ public class FilterFoodTypeItemCardAdapter extends RecyclerView.Adapter<FilterFo
 
             TextView textView = holder.textView;
             textView.setText(item);
+
+            holder.requiredSwitch.setChecked(requiredFoodTypes.contains(item));
         }
 
     @Override

@@ -2,11 +2,13 @@ package com.example.foodnow;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -34,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
     MutableLiveData<String> searchString = new MutableLiveData<>("");
 
     MainActivityViewModel vm;
+
+
+    MenuItem menuFilterButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
         SearchView searchView = (SearchView) searchViewItem.getActionView();
 
 
-
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             // Override onQueryTextSubmit method which is call when submit query is searched
             @Override
@@ -94,8 +98,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        menuFilterButton = menu.findItem(R.id.filterButton);
+        updateFilterButton();
+
+
 
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void updateFilterButton () {
+
+        int iconResource;
+
+        if (vm.getFilter()!=null && !vm.getFilter().requiredFoodTypes.isEmpty())
+            iconResource = R.drawable.ic_filter_icon_activated_24dp;
+        else
+            iconResource = R.drawable.ic_filter_icon_24dp;
+
+        menuFilterButton.setIcon(iconResource);
     }
 
     @Override
@@ -105,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
 
             //open filters
             Intent intent = new Intent(this, FiltersActivity.class);
+            intent.putExtra("filter",vm.getFilter());
             filterActivityResultLauncher.launch(intent);
             return true;
         }
@@ -122,6 +143,7 @@ public class MainActivity extends AppCompatActivity {
                         Intent data = result.getData();
                         Filter f = (Filter) data.getSerializableExtra("filter");
                         vm.setFilter(f);
+                        updateFilterButton();
                     }
                 }
             });
