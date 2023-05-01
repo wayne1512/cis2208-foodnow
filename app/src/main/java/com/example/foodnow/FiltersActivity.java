@@ -59,5 +59,11 @@ public class FiltersActivity extends AppCompatActivity {
             setResult(RESULT_OK, data);
             finish();
         });
+
+        Button clearButton = findViewById(R.id.filter_clear_button);
+        clearButton.setOnClickListener(v->{
+            requiredFoodTypes.clear();
+            adapter.notifyDataSetChanged();
+        });
     }
 }
