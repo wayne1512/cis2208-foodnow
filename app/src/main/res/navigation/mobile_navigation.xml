@@ -8,18 +8,18 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="com.example.foodnow.ui.discover.DiscoverFragment"
-        android:label="@string/title_home"
+        android:label="@string/title_discover_tab"
         tools:layout="@layout/fragment_discover" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
         android:name="com.example.foodnow.ui.dashboard.FavouritesFragment"
-        android:label="@string/title_dashboard"
+        android:label="@string/title_favourites_tab"
         tools:layout="@layout/fragment_favourites" />
 
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.foodnow.ui.notifications.RandomFragment"
-        android:label="@string/title_notifications"
+        android:label="@string/title_random_tab"
         tools:layout="@layout/fragment_random" />
 </navigation>
