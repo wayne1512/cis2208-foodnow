@@ -16,4 +16,5 @@
     
     <string name="no_res_found_subtitle">Consider narrowing your filters or your search query</string>
     <string name="no_results_found_title">No results found</string>
+    <string name="details">details</string>
 </resources>

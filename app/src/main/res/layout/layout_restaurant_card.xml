@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_weight="0"
-                android:text="more details"
+                android:text="@string/details"
                 android:textAppearance="@style/TextAppearance.FoodNow.Button"
                 app:cornerRadius="999999dp" />
 
