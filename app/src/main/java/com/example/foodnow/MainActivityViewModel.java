@@ -5,7 +5,10 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainActivityViewModel extends ViewModel {
+
+    //the search query - used to search the name of the restaurant
     private final MutableLiveData<String> _searchQuery = new MutableLiveData<>("");
+    //the filters as specified by the user in the filters activity.
     private final MutableLiveData<Filter> _filter = new MutableLiveData<>(null);
 
 

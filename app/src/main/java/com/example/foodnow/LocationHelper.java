@@ -58,6 +58,7 @@ public class LocationHelper {
                 ctx,
                 android.Manifest.permission.ACCESS_FINE_LOCATION
         ) != PackageManager.PERMISSION_GRANTED) {
+            //we don't have the required permission, ask for them here.
             ActivityCompat.requestPermissions(
                     ctx,
                     new String[]{

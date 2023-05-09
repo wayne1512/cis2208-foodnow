@@ -46,14 +46,16 @@ public class FiltersActivity extends AppCompatActivity {
                 LinearLayoutManager(recyclerView.getContext()));
 
 
+        //bind submit button
         Button submitButton = findViewById(R.id.filter_submit_button);
         submitButton.setOnClickListener(v -> {
 
+            //create a new filter with the newly selected list of required food types
             Filter f = new Filter();
-
             f.requiredFoodTypes = requiredFoodTypes;
 
 
+            //return the data to the main activity
             Intent data = new Intent();
             data.putExtra("filter", f);
             setResult(RESULT_OK, data);
@@ -62,6 +64,7 @@ public class FiltersActivity extends AppCompatActivity {
 
         Button clearButton = findViewById(R.id.filter_clear_button);
         clearButton.setOnClickListener(v->{
+            //clear list of selected food types
             requiredFoodTypes.clear();
             adapter.notifyDataSetChanged();
         });

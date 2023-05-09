@@ -16,6 +16,7 @@ public class Restaurant implements Serializable {
 
     public float distanceTo;
 
+    //stores the drawables for each food type icon.
     public static HashMap<String, Integer> foodTypeDrawableMap = generateFoodTypeDrawableMap();
 
     private static HashMap<String, Integer> generateFoodTypeDrawableMap() {

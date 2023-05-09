@@ -2,15 +2,65 @@
     <!-- Base application theme. -->
     <style name="Theme.FoodNow" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorPrimary">@color/light_blue</item>
+        <item name="colorPrimaryVariant">@color/light_blue</item>
+        <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorSecondary">@color/blueish_white</item>
+        <item name="colorSecondaryVariant">@color/blueish_white</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+
+        <item name="colorSurface">@color/blueish_white</item>
+        <item name="android:colorBackground">@color/almost_white</item>
+
+
+
+
+    </style>
+
+
+    <style name="TextAppearance.FoodNow.CardTitle" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/lora</item>
+        <item name="android:fontFamily">@font/lora</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="TextAppearance.FoodNow.DetailsTitle" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/lora</item>
+        <item name="android:fontFamily">@font/lora</item>
+        <item name="android:textSize">48sp</item>
+    </style>
+
+    <style name="TextAppearance.FoodNow.SectionHeader" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/lora</item>
+        <item name="android:fontFamily">@font/lora</item>
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="TextAppearance.FoodNow.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:fontFamily">@font/inter</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.FoodNow.handwrittenSubtitle" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/caveat</item>
+        <item name="android:fontFamily">@font/caveat</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:textStyle">bold</item>
+
+    </style>
+
+
+    <style name="TextAppearance.FoodNow.body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textSize">14sp</item>
     </style>
 </resources>

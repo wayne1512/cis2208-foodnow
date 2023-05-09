@@ -36,9 +36,10 @@ public class DiscoverFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
 
-
+        //init location helper - used to get location of device
         locationHelper = new LocationHelper(getActivity());
 
+        //init view model
         discoverViewModel =
                 new ViewModelProvider(this).get(DiscoverViewModel.class);
 
@@ -51,6 +52,7 @@ public class DiscoverFragment extends Fragment {
         noResFoundView = root.findViewById(R.id.no_res_found);
 
 
+        //apply the search query and filter
         MainActivityViewModel activityViewModel = new ViewModelProvider(requireActivity()).get(MainActivityViewModel.class);
         activityViewModel.getSearchQueryLiveData().observe(getViewLifecycleOwner(), query -> {
             discoverViewModel.setSearchString(query);
@@ -107,7 +109,7 @@ public class DiscoverFragment extends Fragment {
             noResFoundView.setVisibility(View.GONE);
 
 
-        //notify the adapter that the dataset has changed, so the recycler view can renderer to reflect the changed data
+        //notify the adapter that the dataset has changed, so the recycler view can re-render to reflect the changed data
         adapter.notifyDataSetChanged();
     }
 

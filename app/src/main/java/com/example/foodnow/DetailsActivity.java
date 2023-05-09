@@ -36,10 +36,12 @@ public class DetailsActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Restaurant restaurant = ((Restaurant) intent.getSerializableExtra("restaurant"));
 
+        //bind the image
         ImageView imageView = findViewById(R.id.details_image);
         imageView.setImageBitmap(ImageReader.getRestaurantBanner(imageView.getContext(), restaurant.id));
 
 
+        //bind labels
         TextView titleView = findViewById(R.id.details_title);
         titleView.setText(restaurant.name);
         TextView subtitleView = findViewById(R.id.details_subtitle);
@@ -47,6 +49,7 @@ public class DetailsActivity extends AppCompatActivity {
 
         TextView distanceView = findViewById(R.id.details_distance_text);
         distanceView.setText(Util.formatDistance(restaurant.distanceTo));
+
 
         Button favouriteButton = findViewById(R.id.details_favouriteButton);
         favouriteButton.setOnClickListener((View view) -> {

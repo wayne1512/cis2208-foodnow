@@ -61,8 +61,11 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
         holder.foodTypeIconBar.removeAllViews();
         if (item.foodTypes == null)
             item.foodTypes = new String[0];
+
+        //create the icons that represent the food types sold by this restaurant
         for (String foodType : item.foodTypes) {
 
+            //get the icon for the food type
             int imageResource = Restaurant.foodTypeDrawableMap.get(foodType);
 
 
@@ -92,6 +95,9 @@ public class RestaurantCardAdapter extends RecyclerView.Adapter<RestaurantCardAd
 
         int iconResource;
 
+
+        //choose between the filled star and the hollow star depending if the restaurant
+        //is in the fav list
         if (restaurant.isFav) {
             iconResource = R.drawable.ic_star_24dp;
         } else {

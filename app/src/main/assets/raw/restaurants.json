@@ -19,8 +19,8 @@
     "id": 3,
     "name": "Pizza Hut",
     "subtitle": "No one outpizzas the hut",
-    "lat": 35.905538986546425,
-    "lon": 14.480339422259483,
+    "lat": 35.90205345378243,
+    "lon": 14.4803297609462,
     "foodTypes":  ["pizza"]
     },
   {
@@ -51,8 +51,8 @@
     "id": 7,
     "name": "The Food Faculty",
     "subtitle": "The Food Faculty... The Official Student Diner!",
-    "lat": 35.90216144599193,
-    "lon": 14.480595508098922,
+    "lat": 35.90194964881059,
+    "lon": 14.483446827361659,
     "foodTypes": ["sandwiches","pizza","coffee"]
   }
 ]

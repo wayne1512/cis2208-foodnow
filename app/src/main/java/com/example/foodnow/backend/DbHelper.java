@@ -51,7 +51,7 @@ public class DbHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(_restaurant_id, restaurant.id);
-
+        //insert id
         return db.insert(FavoriteContract.FavouriteEntry.TABLE_NAME, null, values);
     }
 
@@ -61,6 +61,7 @@ public class DbHelper extends SQLiteOpenHelper {
         String selection = _restaurant_id + " = ?";
         String[] selectionArgs = {Integer.toString(restaurant.id)};
 
+        //delete id
         return db.delete(FavoriteContract.FavouriteEntry.TABLE_NAME, selection, selectionArgs);
     }
 
@@ -84,42 +85,15 @@ public class DbHelper extends SQLiteOpenHelper {
                 sortOrder // The sort order
         );
 
+        //read all the ids returned
         while (cursor.moveToNext()) {
-            long id =
-                    cursor.getLong(cursor.getColumnIndexOrThrow(BaseColumns._ID));
             int restaurant_id =
                     cursor.getInt(cursor.getColumnIndexOrThrow(_restaurant_id));
             favourites.add(restaurant_id);
         }
+        //close the cursor to free up any locks
         cursor.close();
+        //return the list of ids
         return favourites;
-    }
-
-    public boolean getFavouriteByID(int id) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {
-                BaseColumns._ID,
-                _restaurant_id
-        };
-        // Filter results WHERE "id" = condition
-        String selection = _restaurant_id + " = ?";
-        String[] selectionArgs = {Integer.toString(id)};
-        Cursor cursor = db.query(
-                FavoriteContract.FavouriteEntry.TABLE_NAME, // The table to query
-                projection, // The array of columns to return
-                selection, // The columns for the WHERE clause
-                selectionArgs, // The values for the WHERE clause
-                null, // don't group the rows
-                null, // don't filter by row groups
-                null // The sort order
-        );
-        //if the cursor has next, it means that the restaurant was in favourites
-        //therefore return true
-        //otherwise, the query returned 0 rows, meaning the the restaurant was not in favourites
-        //therefore return false;
-        boolean res = cursor.moveToNext();
-        //close the cursor
-        cursor.close();
-        return res;
     }
 }

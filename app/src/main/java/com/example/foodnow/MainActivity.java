@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications)
+                R.id.navigation_discover, R.id.navigation_fav, R.id.navigation_random)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
 
@@ -118,6 +118,7 @@ public class MainActivity extends AppCompatActivity {
 
             //open filters
             Intent intent = new Intent(this, FiltersActivity.class);
+            //pass the current filter to the activity, so that the activity can edit the current filter instead of starting a new one.
             intent.putExtra("filter", vm.getFilter());
             filterActivityResultLauncher.launch(intent);
             return true;
@@ -132,10 +133,14 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == Activity.RESULT_OK) {
-                        // There are no request codes
+                        //get the data from the filters activity and set it on the vm
                         Intent data = result.getData();
-                        Filter f = (Filter) data.getSerializableExtra("filter");
+                        Filter f = null;
+                        if (data != null) {
+                            f = (Filter) data.getSerializableExtra("filter");
+                        }
                         vm.setFilter(f);
+                        //update the icon of the filter button as it may require a change
                         updateFilterButton();
                     }
                 }
